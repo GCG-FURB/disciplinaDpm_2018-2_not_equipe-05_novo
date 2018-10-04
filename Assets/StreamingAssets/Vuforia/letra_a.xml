@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="coringa" size="1024.000000 1024.000000" />
+    <ImageTarget name="animal" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_Z" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_Y" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_X" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_W" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_V" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_U" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_T" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_S" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_R" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_Q" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_P" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_O" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_N" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_M" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_L" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_K" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_J" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_I" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_H" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_G" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_F" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_E" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_D" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_C" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_b" size="1024.000000 1024.000000" />
+    <ImageTarget name="marcador_a" size="1024.000000 1024.000000" />
+  </Tracking>
+</QCARConfig>
