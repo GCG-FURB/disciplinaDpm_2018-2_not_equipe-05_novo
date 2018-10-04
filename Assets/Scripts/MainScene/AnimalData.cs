@@ -1,20 +1,21 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
 public class AnimalData {
     public int Id { get; set; }
     public string Nome { get; set; }
-    public string Descricao { get; set; }
+    public string PrimeiraDica { get; set; }
+    public string SegundaDica { get; set; }
+    public string TerceiraDica { get; set; }
 
     public AnimalData() { }
 
-    public AnimalData(int id, string nome, string descricao)
+    public AnimalData(int id, string nome, string primeiraDica, string segundaDica, string terceiraDica)
     {
         Id = id;
         Nome = nome;
-        Descricao = descricao;
+        PrimeiraDica = primeiraDica;
+        SegundaDica = segundaDica;
+        TerceiraDica = terceiraDica;
     }
 }
