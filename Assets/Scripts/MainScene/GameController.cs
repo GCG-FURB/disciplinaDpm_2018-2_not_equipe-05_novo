@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
 
     private char[] Palavra { get; set; }
 
+    public AnimalData CurrentAnimal { get; private set; }
+
     private List<AnimalData> Animais = new List<AnimalData>
     {
         new AnimalData(1, "Borboleta", "Pertence à classe dos insetos", "Possui asas", "Alimenta-se de néctar"),
@@ -40,12 +42,13 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("AR Camera Loaded");
         Animais.Shuffle();
-        var primeiroAnimal = Animais.FirstOrDefault();
+        var primeiroAnimal = Animais.FirstOrDefault(a => a.Id == 15);
         SetPalavra(primeiroAnimal);
     }
 
     void SetPalavra(AnimalData animal)
     {
+        CurrentAnimal = animal;
         Debug.Log(animal.Nome);
         Palavra = new char[animal.Nome.Length];
         for (int i = 0; i < Palavra.Length; i++)
