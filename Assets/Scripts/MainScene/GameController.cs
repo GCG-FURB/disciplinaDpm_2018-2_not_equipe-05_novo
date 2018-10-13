@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("AR Camera Loaded");
         Animais.Shuffle();
-        var primeiroAnimal = Animais.FirstOrDefault(a => a.Id == 15);
+        var primeiroAnimal = Animais.FirstOrDefault(a => a.Id == 1);
         SetPalavra(primeiroAnimal);
     }
 
