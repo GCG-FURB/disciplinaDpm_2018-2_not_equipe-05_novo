@@ -6,7 +6,7 @@ using Vuforia;
 public class SingleLetterController : MonoBehaviour, ITrackableEventHandler {
 
 	private TrackableBehaviour mTrackableBehaviour;
-	public string letter;
+	public char letter;
 
 	// Use this for initialization
 	void Start () 
@@ -24,7 +24,10 @@ public class SingleLetterController : MonoBehaviour, ITrackableEventHandler {
             newStatus == TrackableBehaviour.Status.TRACKED ||
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
-			Debug.Log("Letter " + letter + " Detected");
+            Debug.Log("Letter " + letter + " Detected");
+            var gameController = (GameController)FindObjectOfType(typeof(GameController));
+            gameController.UpdatePalavra(letter);
+            Debug.Log("Atualizou a palavra");
         }
     }
 }

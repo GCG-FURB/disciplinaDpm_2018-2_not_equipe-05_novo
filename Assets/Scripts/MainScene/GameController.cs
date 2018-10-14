@@ -40,9 +40,8 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("AR Camera Loaded");
         Animais.Shuffle();
-        var primeiroAnimal = Animais.FirstOrDefault(a => a.Id == 1);
+        var primeiroAnimal = Animais.FirstOrDefault(/*a => a.Id == 1*/);
         SetPalavra(primeiroAnimal);
     }
 
@@ -54,14 +53,36 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < Palavra.Length; i++)
             Palavra[i] = '_';
 
-        var textoLetras = new char[animal.Nome.Length * 2];
+        UpdateTextoForca();
+    }
+
+    public void UpdatePalavra(char letra)
+    {
+        if (CurrentAnimal.NomeSemAcento.ToUpper().Contains(letra))
+        {
+            var listaIndices = CurrentAnimal.NomeSemAcento.ToUpper().Select((l, i) => l.Equals(letra) ? i : -1).Where(i => i >= 0);
+            foreach (var indice in listaIndices)
+                Palavra[indice] = CurrentAnimal.Nome.ToUpper()[indice];
+            
+            UpdateTextoForca();
+        }
+        //TODO: Dar algum feedback, para o caso de não encontrar a letra...
+    }
+
+    void UpdateTextoForca()
+    {
+        var textoLetras = new char[Palavra.Length * 2];
+        var indicePalavra = 0;
+
         for (int i = 0; i < textoLetras.Length; i = i + 2)
         {
-            textoLetras[i] = '_';
+            textoLetras[i] = Palavra[indicePalavra];
             textoLetras[i + 1] = ' ';
+            indicePalavra++;
         }
 
         TextoForca.text = new string(textoLetras);
+        Debug.Log(TextoForca.text);
     }
 
     // Update is called once per frame

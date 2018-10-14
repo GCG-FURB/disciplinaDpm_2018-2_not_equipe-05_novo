@@ -29,7 +29,6 @@ public class PrefabController : MonoBehaviour, ITrackableEventHandler {
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             var gameController = (GameController)FindObjectOfType(typeof(GameController));
-            Debug.Log(gameController.CurrentAnimal.Nome);
             foreach (Transform child in transform)
                 child.gameObject.SetActive(child.tag.ToUpper().Equals(gameController.CurrentAnimal.Id.ToString()));
         }
