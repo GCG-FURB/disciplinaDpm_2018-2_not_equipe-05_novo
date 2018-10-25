@@ -1,12 +1,16 @@
 ﻿using Assets.Scripts.ExtensionMethods;
+using Assets.Scripts.MainScene;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public Text TextoForca;
+
+    public Text Letras;
 
     private char[] Palavra { get; set; }
 
@@ -37,9 +41,14 @@ public class GameController : MonoBehaviour
         new AnimalData(21, "Galinha", "Alimenta-se de milho e outros grãos", "É uma ave doméstica", "É um animal de médio porte que não voa")
     };
 
+    private List<char> LetrasLidas { get; set; }
+
+    private int CountLetrasErradas { get; set; }
+
     // Use this for initialization
     void Start()
     {
+        LetrasLidas = new List<char>();
         Animais.Shuffle();
         var primeiroAnimal = Animais.FirstOrDefault(/*a => a.Id == 1*/);
         SetPalavra(primeiroAnimal);
@@ -54,6 +63,8 @@ public class GameController : MonoBehaviour
             Palavra[i] = '_';
 
         UpdateTextoForca();
+        CountLetrasErradas = 0;
+        StaticProperties.NomeAnimal = CurrentAnimal.Nome;
     }
 
     public void UpdatePalavra(char letra)
@@ -63,10 +74,14 @@ public class GameController : MonoBehaviour
             var listaIndices = CurrentAnimal.NomeSemAcento.ToUpper().Select((l, i) => l.Equals(letra) ? i : -1).Where(i => i >= 0);
             foreach (var indice in listaIndices)
                 Palavra[indice] = CurrentAnimal.Nome.ToUpper()[indice];
-            
+
             UpdateTextoForca();
         }
-        //TODO: Dar algum feedback, para o caso de não encontrar a letra...
+        else
+            CountLetrasErradas++;
+
+        UpdateTextoLetras(letra);
+        VerificarCondicoesFimJogo();
     }
 
     void UpdateTextoForca()
@@ -83,6 +98,52 @@ public class GameController : MonoBehaviour
 
         TextoForca.text = new string(textoLetras);
         Debug.Log(TextoForca.text);
+    }
+
+    void UpdateTextoLetras(char letra)
+    {
+        if (!LetrasLidas.Contains(letra))
+        {
+            LetrasLidas.Add(letra);
+
+            int i = 0;
+            string texto = string.Empty;
+
+            LetrasLidas.ForEach(l =>
+            {
+                if (i < 5)
+                    texto += l + " ";
+                else
+                {
+                    texto += "\r\n" + l + " ";
+                    i = 0;
+                }
+
+                i++;
+            });
+
+            Letras.text = texto;
+            Debug.Log(texto);
+        }
+    }
+
+    private void VerificarCondicoesFimJogo()
+    {
+        Debug.Log(Palavra.Count(letra => letra.Equals('_')));
+
+        //TODO: Desabilitar câmera do Vuforia ao mover de cena.
+
+        if (CountLetrasErradas >= 5)
+            SceneManager.LoadScene("LostScene");
+        else if (Palavra.Count(letra => letra.Equals('_')) == 0)
+        {
+            Animais.Remove(CurrentAnimal);
+
+            if (Animais.Count > 0)
+                SceneManager.LoadScene("WinScene");
+            else
+                SceneManager.LoadScene("FinalScene");
+        }
     }
 
     // Update is called once per frame
