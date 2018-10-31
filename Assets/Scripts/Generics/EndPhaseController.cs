@@ -11,7 +11,7 @@ public class EndPhaseController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Frase += "\r\n" + StaticProperties.NomeAnimal;
+        Frase += "\r\n" + StaticProperties.Instance.CurrentAnimal.Nome;
         TextoFinal.text = Frase;
 	}
 	

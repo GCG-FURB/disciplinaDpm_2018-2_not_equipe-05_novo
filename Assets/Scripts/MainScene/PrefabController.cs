@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.MainScene;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -28,9 +29,8 @@ public class PrefabController : MonoBehaviour, ITrackableEventHandler {
             newStatus == TrackableBehaviour.Status.TRACKED ||
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
-            var gameController = (GameController)FindObjectOfType(typeof(GameController));
             foreach (Transform child in transform)
-                child.gameObject.SetActive(child.tag.ToUpper().Equals(gameController.CurrentAnimal.Id.ToString()));
+                child.gameObject.SetActive(child.tag.ToUpper().Equals(StaticProperties.Instance.CurrentAnimal.Id.ToString()));
         }
         else
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.MainScene;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,8 +25,7 @@ public class CoringaController : MonoBehaviour, ITrackableEventHandler
             newStatus == TrackableBehaviour.Status.TRACKED ||
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
-            var gameController = (GameController)FindObjectOfType(typeof(GameController));
-            string texto = "1. " + gameController.CurrentAnimal.PrimeiraDica + "\r\n" + "2. " + gameController.CurrentAnimal.SegundaDica + "\r\n" + "3. " + gameController.CurrentAnimal.TerceiraDica;
+            string texto = "1. " + StaticProperties.Instance.CurrentAnimal.PrimeiraDica + "\r\n" + "2. " + StaticProperties.Instance.CurrentAnimal.SegundaDica + "\r\n" + "3. " + StaticProperties.Instance.CurrentAnimal.TerceiraDica;
 
             TextoDica.text = texto;
             Debug.Log(texto);
