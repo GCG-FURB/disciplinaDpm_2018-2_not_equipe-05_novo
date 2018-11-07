@@ -61,7 +61,7 @@ namespace Assets.Scripts.MainScene
             Debug.Log("SetCurrentAnimal");
             var animaisDisponiveis = Animais.Except(AnimaisJogados).ToList();
             animaisDisponiveis.Shuffle();
-            CurrentAnimal = animaisDisponiveis.FirstOrDefault();
+            CurrentAnimal = animaisDisponiveis.FirstOrDefault(/*a => a.Id == 7*/);
         }
 
         public void AddAnimalJogado()
