@@ -19,7 +19,7 @@ MonoBehaviour:
     maxSimultaneousImageTargets: 1000000
     maxSimultaneousObjectTargets: 1000000
     useDelayedLoadingObjectTargets: 0
-    cameraDirection: 0
+    cameraDirection: 1
     mirrorVideoBackground: 0
     version: 7.2.23
   digitalEyewear:
@@ -64,6 +64,6 @@ MonoBehaviour:
     autoStartTracker: 0
   webcam:
     deviceNameSetInEditor: 
-    flipHorizontally: 0
+    flipHorizontally: 1
     turnOffWebCam: 0
     renderTextureLayer: 30

@@ -20,6 +20,11 @@ public class LostSceneScript : MonoBehaviour {
         SceneManager.LoadScene("MenuScene");
     }
 
+    public void VerAnimal()
+    {
+        SceneManager.LoadScene("AnimalScene");
+    }
+
     public void Continuar()
     {
         SceneManager.LoadScene("MainScene");

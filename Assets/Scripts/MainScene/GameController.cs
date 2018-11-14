@@ -126,11 +126,7 @@ public class GameController : MonoBehaviour
         {
             //VuforiaBehaviour.Instance.enabled = false;
             //VuforiaRuntime.Instance.Deinit();
-
-            if (StaticProperties.Instance.AnimaisJogados.Count < StaticProperties.Instance.Animais.Count - 1)
-                SceneManager.LoadScene("WinScene");
-            else
-                SceneManager.LoadScene("FinalScene");
+            SceneManager.LoadScene("WinScene");
         }
     }
 
